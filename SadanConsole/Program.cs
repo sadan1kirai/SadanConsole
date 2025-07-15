@@ -8,19 +8,24 @@ namespace SadanConsole
             Console.CursorVisible = false;
 
             Map map = new Map();
+
             Player player = new Player(map, 40,10);
+            Enemy enemy = new Enemy(map, 35,20);
 
             player.PlayerDraw();
+            enemy.EnemyDraw();
+
             map.Label();
 
             while (true)
             {
+                // Oyuncu hareketi
                 if (Console.KeyAvailable)
-                {
-                    ConsoleKey key = Console.ReadKey(true).Key;
+                    player.Movement(Console.ReadKey(true).Key);
 
-                    player.Movement(key);
-                }
+                // Düşman hareketleri
+                enemy.EnemyMove();
+
             }
         }
     }

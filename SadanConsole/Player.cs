@@ -13,7 +13,13 @@ namespace SadanConsole
         public int X { get; set; }
         public int Y { get; set; }
 
+        public int Speed { get; set; } = 1; //aslında kac kare atlıyacagı ayarı belki 2 3 yaparız mapi büyütürüz gibi degistirilebilir.
+
+
+        //karakterler
         private const char PLAYER_CHAR = '@';
+
+
 
         public Player(Map map, int StartPosX, int StartPosY)
         {
@@ -48,16 +54,16 @@ namespace SadanConsole
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    newY--;
+                    newY-=Speed;
                     break;
                 case ConsoleKey.DownArrow:
-                    newY++;
+                    newY+=Speed;
                     break;
                 case ConsoleKey.LeftArrow:
-                    newX--; 
+                    newX-=Speed; 
                     break;
                 case ConsoleKey.RightArrow:
-                    newX++;
+                    newX+=Speed;
                     break;
                 case ConsoleKey.Escape:
                     ExitApplication();
