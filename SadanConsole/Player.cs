@@ -1,81 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SadanConsole
 {
-    class Player
+    public class Player : Character
     {
-        private Map map;
+        public int Speed { get; set; } = 1;
 
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public int Speed { get; set; } = 1; //aslında kac kare atlıyacagı ayarı belki 2 3 yaparız mapi büyütürüz gibi degistirilebilir.
-
-
-        //karakterler
-        private const char PLAYER_CHAR = '@';
-
-
-
-        public Player(Map map, int StartPosX, int StartPosY)
+        public Player(Map map, int X, int Y, char Symbol) : base(map, X, Y, '@')
+        { }
+        public override void Move(ConsoleKey key)
         {
-            this.map = map;
-            X = StartPosX;
-            Y = StartPosY;
-        }
-
-
-        public void PlayerDraw()
-        {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(PLAYER_CHAR); 
-        }
-        public void PlayerClear()
-        {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(' ');
-        }
-        public void ExitApplication() //exit gibi
-        {
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine("Oyun sonlandırılmıştır.");
-            Environment.Exit(0);
-        }
-        public void Movement(ConsoleKey key)
-        {
-            int newX = X;
-            int newY = Y;
+            int newX = X, newY = Y;
 
             switch (key)
             {
-                case ConsoleKey.UpArrow:
-                    newY-=Speed;
-                    break;
-                case ConsoleKey.DownArrow:
-                    newY+=Speed;
-                    break;
-                case ConsoleKey.LeftArrow:
-                    newX-=Speed; 
-                    break;
-                case ConsoleKey.RightArrow:
-                    newX+=Speed;
-                    break;
-                case ConsoleKey.Escape:
-                    ExitApplication();
-                    break;
+                case ConsoleKey.UpArrow: newY -= Speed; break;
+                case ConsoleKey.DownArrow: newY += Speed; break;
+                case ConsoleKey.LeftArrow: newX -= Speed; break;
+                case ConsoleKey.RightArrow: newX += Speed; break;
+
+                case ConsoleKey.Escape: Environment.Exit(0); break; //uygulama kapatma tusu belki program.cs tasiyabiliriiz
+                                                                    //while icinde kosul acarak
+                default: return;
             }
+
             if (map.IsInMap(newX, newY))
             {
-                PlayerClear();
+                Clear();     // Eski konumu temizle
                 X = newX;
                 Y = newY;
-                PlayerDraw();
+                Draw();      // Yeni konuma çiz
             }
         }
+
     }
 }
