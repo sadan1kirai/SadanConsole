@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SadanConsole
+namespace SadanConsole.Movement
 {
-    public interface IEntity
+    public class HorizontalMove
     {
-        void Draw();
-        void Clear();
-        void Map();
-
     }
 }

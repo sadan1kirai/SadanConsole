@@ -5,8 +5,12 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using SadanConsole.Map;
+using SadanConsole.Core;
+using SadanConsole.Movement;
 
-namespace SadanConsole
+
+namespace SadanConsole.Map
 {
     public class Map
     {
@@ -36,7 +40,7 @@ namespace SadanConsole
             Console.SetCursorPosition(0, 3);
             Console.Write(' ');
             Console.SetCursorPosition(0, 3);
-            Console.Write($"X: {player.X} Y: {player.Y}");
+            Console.Write($"X: {player.Position.X} Y: {player.Position.Y}");
         }
         private void DrawMap()
         {
