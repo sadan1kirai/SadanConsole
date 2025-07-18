@@ -24,9 +24,9 @@ namespace SadanConsole.Game
 
             enemies = new List<Enemy>
             {
-                new Enemy(new Position(45, 3), 'X', 1, renderer, new RandomMove()),
-                new Enemy(new Position(53, 17), 'X', 1, renderer, new RandomMove()),
-                new Enemy(new Position(68, 12), 'X', 1, renderer, new RandomMove())
+                new Enemy(new Position(18, 3), 'X', 1, renderer, new RandomMove()),
+                new Enemy(new Position(30, 17), 'X', 1, renderer, new RandomMove()),
+                new Enemy(new Position(50, 12), 'X', 1, renderer, new RandomMove())
             };
 
 
