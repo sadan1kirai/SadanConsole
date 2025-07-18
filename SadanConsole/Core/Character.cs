@@ -22,8 +22,5 @@
         {
             renderer.Clear(Position);
         }
-
-        public abstract void Move(ConsoleKey key, Map.Map map);
     }
-
 }

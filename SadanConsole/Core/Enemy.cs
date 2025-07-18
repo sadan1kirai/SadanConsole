@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace SadanConsole.Core
 {
-    // Core klasöründeki Enemy.cs
     public class Enemy : Character
     {
         public int Speed { get; set; }
@@ -20,7 +19,7 @@ namespace SadanConsole.Core
             this.movement = movement;
         }
 
-        public override void Move(ConsoleKey key, Map.Map map)
+        public void Move(ConsoleKey key, Map.Map map)
         {
             movement.Move(this, map);
         }

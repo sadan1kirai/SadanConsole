@@ -1,13 +1,10 @@
-﻿using SadanConsole.Game;
+﻿using SadanConsole.Core;
+using SadanConsole.Game;
 
-namespace SadanConsole
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var gameManager = new GameManager();
-            gameManager.Run();
-        }
+        GameLoop.Start();
     }
 }
